@@ -13,8 +13,7 @@ const navItems = [
   { name: "LOG IN", path: "/" },
 ];
 
-const Navbar = ({ params }) => {
-  const currentPage = params.id;
+const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
 
