@@ -100,7 +100,7 @@ const OrderSummaryPage = () => {
     },
   ];
   return (
-    <div className="pt-20 pl-40 flex">
+    <div className="flex">
       <div>
         <div>
           <p className="mb-11 font-bold text-4xl">Order Summary</p>

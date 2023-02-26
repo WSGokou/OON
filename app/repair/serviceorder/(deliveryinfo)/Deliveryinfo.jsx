@@ -61,10 +61,7 @@ const Deliveryinfo = () => {
         >
           Back
         </div>
-        <Link
-          href={`${
-            fieldsComplete ? "/repair/ordersummary" : "repair/serviceorder"
-          }`}
+        <button
           onClick={() => {
             fieldsComplete && setOrderProgress(5);
           }}
@@ -73,7 +70,7 @@ const Deliveryinfo = () => {
           } w-24 h-12 border-5 border-black bg-black text-white text-xl font-bold uppercase flex justify-center items-center cursor-pointer`}
         >
           Next
-        </Link>
+        </button>
       </div>
     </div>
   );

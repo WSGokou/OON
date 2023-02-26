@@ -7,6 +7,7 @@ import ProgressBar from "./ProgressBar";
 import AddPhotos from "../(photoupload)/AddPhotos";
 import Deliveryinfo from "./(deliveryinfo)/Deliveryinfo";
 import { useRepairContext } from "../../Context/repair";
+import OrderSummaryPage from "../(ordersummary)/OrderSummary";
 
 const ServiceOrderPage = () => {
   const { orderProgress, setOrderProgress } = useRepairContext();
@@ -25,8 +26,10 @@ const ServiceOrderPage = () => {
           <SelectService />
         ) : orderProgress === 3 ? (
           <AddPhotos />
+        ) : orderProgress === 4 ? (
+          <Deliveryinfo />
         ) : (
-          orderProgress === 4 && <Deliveryinfo />
+          orderProgress === 5 && <OrderSummaryPage />
         )}
       </div>
     </section>
