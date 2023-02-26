@@ -4,11 +4,25 @@ import { useRepairContext } from "../../../Context/repair";
 import Link from "next/link";
 
 const Deliveryinfo = () => {
-  const { setOrderProgress, selectedAddressPu, setSelectedAddressDo } =
-    useRepairContext();
+  const {
+    setOrderProgress,
+    selectedAddressPu,
+    selectedAddressDo,
+    setSelectedAddressDo,
+    selectedTimeDo,
+    selectedTimePu,
+  } = useRepairContext();
 
   // State for if same address box is ticked
   const [same, setSame] = useState(false);
+
+  const fieldsComplete =
+    selectedAddressPu &&
+    selectedAddressDo &&
+    selectedTimeDo.start &&
+    selectedTimeDo.end &&
+    selectedTimePu.start &&
+    selectedTimePu.end;
 
   return (
     <div className="w-[775px]">
@@ -48,11 +62,15 @@ const Deliveryinfo = () => {
           Back
         </div>
         <Link
-          href="/repair/ordersummary"
+          href={`${
+            fieldsComplete ? "/repair/ordersummary" : "repair/serviceorder"
+          }`}
           onClick={() => {
-            setOrderProgress(5);
+            fieldsComplete && setOrderProgress(5);
           }}
-          className="w-24 h-12 border-5 border-black bg-black text-white text-xl font-bold uppercase flex justify-center items-center cursor-pointer"
+          className={`${
+            !fieldsComplete && "opacity-30"
+          } w-24 h-12 border-5 border-black bg-black text-white text-xl font-bold uppercase flex justify-center items-center cursor-pointer`}
         >
           Next
         </Link>

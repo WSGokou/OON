@@ -62,7 +62,13 @@ const AddPhoto = () => {
         <div
           onClick={() => {
             setOrderProgress(4);
-            setUploadedFiles([]);
+            setUploadedFiles([
+              {
+                fileId: 1,
+                fileUrl: "",
+                comment: "",
+              },
+            ]);
           }}
           className="w-24 h-12 text-xl font-bold uppercase flex justify-center items-center cursor-pointer"
         >

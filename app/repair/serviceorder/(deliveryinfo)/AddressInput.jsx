@@ -36,7 +36,7 @@ const AddressInput = ({ boxTitle, same }) => {
   };
 
   return (
-    <div className="h-32 w-[775px] flex flex-col">
+    <div className="h-32 w-[775px] border-black border-5 flex flex-col">
       {/* Top half */}
       <div className="flex h-16 border-b-5 bg-white border-black relative">
         <div className="w-2/6 bg-black text-white text-xl font-semibold flex justify-center items-center">
@@ -44,7 +44,7 @@ const AddressInput = ({ boxTitle, same }) => {
         </div>
         {/* Time selection box */}
         <div
-          className="flex items-center text-x font-medium border-5 border-black w-4/6"
+          className="flex items-center text-x font-medium w-4/6"
           onClick={handleShowSelect}
         >
           {/* Triangle */}
@@ -76,7 +76,7 @@ const AddressInput = ({ boxTitle, same }) => {
       </div>
       {/* Bottom half */}
       <input
-        className="bg-white h-1/2 pl-6 border-black border-5"
+        className="bg-white h-1/2 pl-6"
         placeholder="Enter the post code to find the address"
         value={boxTitle === "Pick up" ? selectedAddressPu : selectedAddressDo}
         onChange={handleAddressChange}
