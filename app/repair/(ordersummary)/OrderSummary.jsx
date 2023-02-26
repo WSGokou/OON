@@ -3,7 +3,6 @@ import { useRepairContext } from "../../Context/repair";
 import React from "react";
 import ItemButton from "../serviceorder/(selectitem)/ItemButton";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const OrderSummaryPage = () => {
@@ -19,7 +18,6 @@ const OrderSummaryPage = () => {
     selectedDatePu,
   } = useRepairContext();
 
-  const router = useRouter();
   const steps = [
     {
       id: 1,
@@ -137,7 +135,6 @@ const OrderSummaryPage = () => {
         <button
           onClick={() => {
             setOrderProgress(4);
-            router.back();
           }}
           className="w-48 h-12 ml-10 my-16 bg-white border-5 border-black flex items-center justify-center uppercase font-bold text-xl"
         >
