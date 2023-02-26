@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "../shop/products/Product";
+import Product from "../shop/[category]/products/Product";
 import Link from "next/link";
 
 const ShopLatest = () => {

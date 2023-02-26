@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import PhotoUpload from "./PhotoUpload";
+import { useRepairContext } from "../../Context/repair";
 
-const AddPhoto = ({ setOrderProgress, uploadedFiles, setUploadedFiles }) => {
+const AddPhoto = () => {
+  const { setOrderProgress, uploadedFiles, setUploadedFiles } =
+    useRepairContext();
   // const [photoCounter, setPhotoCounter] = useState([1, 2, 3, 4, 5]);
   const photoCounter = [1];
   return (
@@ -16,11 +19,7 @@ const AddPhoto = ({ setOrderProgress, uploadedFiles, setUploadedFiles }) => {
       {/* Photo upload boxes */}
       {photoCounter.map((count) => (
         <div key={count} className="flex items-center">
-          <PhotoUpload
-            uploadedFiles={uploadedFiles}
-            setUploadedFiles={setUploadedFiles}
-            idx={count - 1}
-          />
+          <PhotoUpload idx={count} />
           {count > 1 && (
             <p
               onClick={() => {
@@ -63,7 +62,7 @@ const AddPhoto = ({ setOrderProgress, uploadedFiles, setUploadedFiles }) => {
         <div
           onClick={() => {
             setOrderProgress(4);
-            setUploadedFiles("");
+            setUploadedFiles([]);
           }}
           className="w-24 h-12 text-xl font-bold uppercase flex justify-center items-center cursor-pointer"
         >

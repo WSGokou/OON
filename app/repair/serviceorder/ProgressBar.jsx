@@ -1,11 +1,12 @@
+"use client";
+
+import { useRepairContext } from "../../Context/repair";
 import React from "react";
 
-const ProgressBar = ({
-  orderProgress,
-  selectedItem,
-  selectedService,
-  uploadedFiles,
-}) => {
+const ProgressBar = () => {
+  const { orderProgress, selectedItem, selectedService, uploadedFiles } =
+    useRepairContext();
+
   const steps = [
     {
       id: 1,
@@ -15,14 +16,14 @@ const ProgressBar = ({
     {
       id: 2,
       text: "Select service",
-      info: selectedService || "N/A",
+      info: selectedService.text || "N/A",
     },
     {
       id: 3,
       text: "Add photo/comment",
       info:
         orderProgress > 3
-          ? uploadedFiles !== ""
+          ? uploadedFiles[0]?.fileUrl
             ? "UPLOADED ✓"
             : "SKIP ✓"
           : "N/A",
@@ -36,8 +37,6 @@ const ProgressBar = ({
 
   return (
     <div>
-      {orderProgress}
-      {uploadedFiles}
       <p className="mb-11 font-bold text-4xl">Your Order</p>
       <div className="flex flex-col gap-y-6 justify-center">
         {/* Left bar line */}

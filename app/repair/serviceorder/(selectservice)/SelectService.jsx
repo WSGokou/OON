@@ -1,13 +1,9 @@
-"use client";
-
 import React, { useState } from "react";
 import ServiceButtons from "./ServiceButtons";
+import { useRepairContext } from "../../../Context/repair";
 
-const SelectService = ({
-  setOrderProgress,
-  selectedService,
-  setSelectedService,
-}) => {
+const SelectService = () => {
+  const { setOrderProgress } = useRepairContext();
   const [topBar, setTopBar] = useState("repairs");
   return (
     <div className="w-fit">
@@ -37,11 +33,7 @@ const SelectService = ({
           alterations
         </div>
       </div>
-      <ServiceButtons
-        selectedService={selectedService}
-        setSelectedService={setSelectedService}
-        setOrderProgress={setOrderProgress}
-      />
+      <ServiceButtons />
       <div
         onClick={() => {
           setOrderProgress(1);

@@ -1,10 +1,9 @@
+import { useRepairContext } from "../../../Context/repair";
 import React from "react";
 
-const ServiceButtons = ({
-  selectedService,
-  setSelectedService,
-  setOrderProgress,
-}) => {
+const ServiceButtons = () => {
+  const { setOrderProgress, selectedService, setSelectedService } =
+    useRepairContext();
   const services = [
     { text: "replace zip", price: "£15" },
     { text: "sew on buttons", price: "£4" },
@@ -16,11 +15,11 @@ const ServiceButtons = ({
         <div
           key={idx}
           onClick={() => {
-            setSelectedService(`${service.text} (${service.price})`);
+            setSelectedService(service);
             setOrderProgress(3);
           }}
           className={`${
-            selectedService.includes(service.text) && "bg-active-green"
+            selectedService.text.includes(service.text) && "bg-active-green"
           } h-20 px-9 text-2xl font-bold lowercase bg-white hover:bg-active-green border-5 border-black flex justify-between items-center`}
         >
           <p>{service.text}</p>
@@ -33,7 +32,7 @@ const ServiceButtons = ({
           setOrderProgress(3);
         }}
         className={`${
-          selectedService.includes("other") && "bg-active-green"
+          selectedService.text.includes("other") && "bg-active-green"
         } h-20 px-9 text-2xl font-bold text-[#007743] bg-white hover:bg-active-green border-5 border-[#007743] flex justify-between items-center`}
       >
         <p>other requests</p>

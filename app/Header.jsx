@@ -24,7 +24,9 @@ const Header = () => {
       </Link>
       {/* Account wishlist and basket buttons */}
       <div className="h-5 flex flex-row justify-between gap-8">
-        <Image src={Account} alt="Account" />
+        <Link href="/profile/user">
+          <Image src={Account} alt="Account" />
+        </Link>
         <Image src={Wishlist} alt="Wishlist" />
         <Image src={Basket} alt="Basket" />
       </div>

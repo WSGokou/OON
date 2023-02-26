@@ -1,16 +1,25 @@
 import Image from "next/image";
 import { ChangeEvent } from "react";
 import UpArrow from "../../assets/icons/uparrow.svg";
+import { useRepairContext } from "../../Context/repair";
 
-const PhotoUpload = ({ uploadedFiles, setUploadedFiles, idx }) => {
+const PhotoUpload = ({ idx }) => {
+  const { uploadedFiles, setUploadedFiles } = useRepairContext();
   const handleUpload = (e) => {
-    console.log(e.target.files);
-    const fileUpdate = {
-      ...uploadedFiles,
-      name: URL.createObjectURL(e.target.files[0]),
+    console.log("uploadedfile", e.target.files);
+    const currentFileIdx = uploadedFiles.findIndex(
+      (file) => file.fileId === idx
+    );
+    const updatedFile = {
+      ...uploadedFiles[currentFileIdx],
+      fileUrl: URL.createObjectURL(e.target.files[0]),
     };
-    console.log(fileUpdate);
-    setUploadedFiles(fileUpdate);
+    const newFiles = [
+      ...uploadedFiles.slice(0, currentFileIdx),
+      updatedFile,
+      ...uploadedFiles.slice(currentFileIdx + 1),
+    ];
+    setUploadedFiles(newFiles);
   };
 
   return (
@@ -20,7 +29,7 @@ const PhotoUpload = ({ uploadedFiles, setUploadedFiles, idx }) => {
         <p className="text-xl font-semibold mb-1">Media</p>
         <p className="text-sm mb-2">format: JPEG, MPEG, MOV</p>
         <div className="w-72 h-48 border-5 border-black flex flex-col justify-center items-center relative">
-          {!uploadedFiles.name ? (
+          {!uploadedFiles[idx - 1]?.fileUrl ? (
             <button
               onClick={() => {
                 document.getElementById("getFile").click();
@@ -34,7 +43,7 @@ const PhotoUpload = ({ uploadedFiles, setUploadedFiles, idx }) => {
               onClick={() => {
                 document.getElementById("getFile").click();
               }}
-              src={uploadedFiles.name}
+              src={uploadedFiles[idx - 1]?.fileUrl}
               fill
               alt="Image Added!"
             />
@@ -53,10 +62,22 @@ const PhotoUpload = ({ uploadedFiles, setUploadedFiles, idx }) => {
         <p className="text-xl font-semibold mb-1">Comment</p>
         <p className="text-sm mb-2">Write down the message if you want.</p>
         <textarea
-          value={uploadedFiles.comment}
+          value={uploadedFiles[idx - 1]?.comment}
           onChange={(e) => {
-            const fileUpdate = { ...uploadedFiles, comment: e.target.value };
-            setUploadedFiles(fileUpdate);
+            const currentFileIdx = uploadedFiles.findIndex(
+              (file) => file.fileId === idx
+            );
+            const updatedFile = {
+              ...uploadedFiles[currentFileIdx],
+              comment: e.target.value,
+            };
+            const newFiles = [
+              ...uploadedFiles.slice(0, currentFileIdx),
+              updatedFile,
+              ...uploadedFiles.slice(currentFileIdx + 1),
+            ];
+
+            setUploadedFiles(newFiles);
           }}
           placeholder="type here..."
           className="p-4 w-96 h-48 -ml-1 border-5 border-black"
