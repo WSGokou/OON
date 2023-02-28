@@ -2,13 +2,8 @@ import Link from "next/link";
 import React from "react";
 import Product from "./[category]/products/Product";
 import Heart from "../assets/icons/heart.png";
-import { getCategories, getOONCats } from "@/utils/categories";
 
 const ShopPage = async () => {
-  const categoryData = await getOONCats();
-  const categoryArray = Object.entries(categoryData);
-  const catList = categoryArray[0][1].categoryList;
-
   return (
     <div className="pt-20 pb-40 flex flex-col items-center bg-[${Heart}]">
       <p className="mb-[508px] text-5xl font-bold w-[1120px] h-56">

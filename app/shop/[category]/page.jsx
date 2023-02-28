@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import Filters from "./Filters";
 import AllProducts from "./AllProducts";
-import { getCategories, getOONCats } from "@/utils/categories";
+import { getOONCats } from "@/utils/categories";
 import { getProducts } from "@/utils/products";
 
 const CategoryPage = async ({ params }) => {
