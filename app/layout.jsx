@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "./Header";
 import Navbar from "./(navbar)/Navbar";
 import Footer from "./Footer";
+import { ShopContextProvider } from "./Context/shop";
 
 export default function RootLayout({ children }) {
   return (
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
         <div className="min-w-[1440px] max-w-[1440px] mx-auto flex flex-col bg-main-cream">
           <Header />
           <Navbar />
-          {children}
+          <ShopContextProvider>{children}</ShopContextProvider>
           <Footer />
         </div>
       </body>

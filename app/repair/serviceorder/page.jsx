@@ -13,7 +13,7 @@ const ServiceOrderPage = () => {
   const { orderProgress, setOrderProgress } = useRepairContext();
 
   return (
-    <section className="pt-16 pb-20 pl-40 flex gap-x-24 border-5 border-green-400">
+    <section className="pt-16 pb-20 pl-40 flex gap-x-24">
       {orderProgress < 5 && (
         <div>
           <ProgressBar />

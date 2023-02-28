@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Insta from "./assets/icons/insta.png";
 import FB from "./assets/icons/fb.png";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -28,7 +29,13 @@ const Footer = () => {
           />
           <p>FOLLOW US</p>
           <div className="flex gap-3.5">
-            <Image src={Insta} alt="Instagram" />
+            <Link
+              href="https://www.instagram.com/oneoffnature/?hl=en"
+              target="_blank"
+            >
+              <Image src={Insta} alt="Instagram" />
+            </Link>
+            {/* <Link href="https://www.pinterest.co.uk/oneoffnature/"></Link> */}
             <Image src={FB} alt="Facebook" />
           </div>
         </div>

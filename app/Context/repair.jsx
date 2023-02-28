@@ -12,7 +12,7 @@ const RepairContext = createContext({
   orderProgress: 1,
   selectedItem: "",
   selectedService: { text: "", price: "" },
-  uploadedFiles: { fileName: "", comment: "" },
+  uploadedFiles: { fileId: 1, fileName: "", comment: "" },
   selectedDatePu: "",
   selectedTimePu: {
     start: "",

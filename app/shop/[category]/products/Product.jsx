@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Heart from "../../../assets/icons/heart.svg";
+import OonLogo from "../../../assets/images/oon-logo.svg";
 
 const Product = ({ productId, media, price, name, designer }) => {
   return (
@@ -9,7 +10,13 @@ const Product = ({ productId, media, price, name, designer }) => {
       {/* Product Square */}
       <Link href={`/shop/category/products/${productId}`}>
         <div className="h-64 w-full mb-2 border-black bg-white group-hover:bg-gradient-to-r from-[#ffbc1014] to-[#ffbc1014] border-10 relative">
-          <Image src={media} alt="Image" fill sizes="100%" />
+          <Image
+            src={media || OonLogo}
+            alt="Image"
+            fill
+            className="object-contain"
+            sizes="100%"
+          />
           <svg
             width="21"
             height="20"

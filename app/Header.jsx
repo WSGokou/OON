@@ -27,7 +27,9 @@ const Header = () => {
         <Link href="/profile/user">
           <Image src={Account} alt="Account" />
         </Link>
-        <Image src={Wishlist} alt="Wishlist" />
+        <Link href="/profile/user">
+          <Image src={Wishlist} alt="Wishlist" />
+        </Link>
         <Image src={Basket} alt="Basket" />
       </div>
     </main>

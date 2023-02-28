@@ -1,9 +1,9 @@
 import React from "react";
 import MultiSelect from "./MultiSelect";
 
-const Filters = () => {
+const Filters = ({ categories }) => {
   return (
-    <div className="mb-36 flex justify-between">
+    <div className="mb-20 flex justify-between">
       {["CATEGORIES", "SIZE", "PRICES", "DELIVERY", "SORT BY"].map((item) => (
         <MultiSelect key={item} text={item} />
       ))}

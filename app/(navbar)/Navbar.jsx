@@ -4,38 +4,35 @@ import React, { useState } from "react";
 import NavItem from "./Navitem";
 
 const navItems = [
-  { name: "WOMEN", path: "/shop/women" },
-  { name: "MEN", path: "/shop/men" },
-  { name: "ACCESSORIES", path: "/shop/accessories" },
-  { name: "ABOUT US", path: "/about" },
-  { name: "BLOG", path: "/blog" },
-  { name: "SIGN UP", path: "/" },
-  { name: "LOG IN", path: "/" },
+  { idx: 1, name: "WOMEN", path: "/shop/women" },
+  { idx: 2, name: "MEN", path: "/shop/men" },
+  { idx: 3, name: "ACCESSORIES", path: "/shop/gear" },
+  { idx: 4, name: "ABOUT US", path: "/about" },
+  { idx: 5, name: "BLOG", path: "/blog" },
+  { idx: 6, name: "SIGN UP", path: "/" },
+  { idx: 7, name: "LOG IN", path: "/" },
 ];
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
-  const [activeIdx, setActiveIdx] = useState(-1);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   return (
     // Bar container
     <div
       className={`${
         navActive ? "active" : ""
-      }max-w-[1440px] flex flex-row h-9 items-center mx-auto border-solid border-2 border-black font-bold gap-x-px`}
+      }max-w-[1440px] w-full text-main-cream border border-black flex flex-row flex-grow h-9 items-center mx-auto font-bold`}
     >
       {/* Individual button mapping */}
-      {navItems.map((item, idx) => (
-        <div
-          className="flex  text-main-cream uppercase h-full bg-black w-52"
-          onClick={() => {
-            setActiveIdx(idx);
-            setNavActive(false);
-          }}
+      {navItems.map((item) => (
+        <NavItem
           key={item.name}
-        >
-          <NavItem active={activeIdx === idx} {...item} />
-        </div>
+          active={activeIdx === item.idx}
+          setActiveIdx={setActiveIdx}
+          setNavActive={setNavActive}
+          {...item}
+        />
       ))}
     </div>
   );
