@@ -56,5 +56,5 @@ export async function GET() {
 
   const data = res.data;
 
-  return NextResponse.json(data);
+  return NextResponse.json({ data });
 }

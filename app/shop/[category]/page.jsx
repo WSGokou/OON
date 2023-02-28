@@ -19,9 +19,9 @@ const CategoryPage = async ({ params }) => {
   // }).then((res) => res.json());
 
   // Main items
-  const { categoryList } = categoryData;
+  const { categoryList } = categoryData.data;
   const mainCategories = categoryList[0].children;
-  const allProducts = productData?.products;
+  const allProducts = productData?.data.products;
 
   // Take object of top layer categories from category based on page
   const categoryL1 = mainCategories?.find((item) => {

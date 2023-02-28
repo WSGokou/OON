@@ -8,7 +8,7 @@ import WhoAreWe from "./(landing)/WhoAreWe";
 import { getProducts } from "@/utils/products";
 
 export default async function Home() {
-  const { products: allProducts } = await getProducts();
+  const allProducts = await getProducts();
 
   return (
     <main className="pt-24 pb-16 flex flex-col justify-center items-center">
@@ -19,7 +19,7 @@ export default async function Home() {
       <OurDesigners />
       <PopularServices />
       <OurVision />
-      <ShopLatest allProducts={allProducts.items} />
+      <ShopLatest allProducts={allProducts.data.products.items} />
     </main>
   );
 }
