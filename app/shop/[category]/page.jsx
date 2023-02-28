@@ -19,9 +19,9 @@ const CategoryPage = async ({ params }) => {
   // }).then((res) => res.json());
 
   // Main items
-  const { categoryList } = categoryData.data;
-  const mainCategories = categoryList[0].children;
-  const allProducts = productData?.data.products;
+  const { categoryList } = categoryData?.data;
+  const mainCategories = categoryList[0]?.children;
+  const allProducts = productData?.data?.products;
 
   // Take object of top layer categories from category based on page
   const categoryL1 = mainCategories?.find((item) => {
@@ -33,12 +33,12 @@ const CategoryPage = async ({ params }) => {
     <div className="px-40 pt-10 pb-12 flex flex-col">
       {/* Title from categoryL1 name */}
       <h1 className="mb-4 text-4xl font-bold uppercase">{slug}</h1>
-      {console.log("layer1cat", categoryL1)}
-      {console.log("allprods", productData)}
+      {/* {console.log("layer1cat", categoryL1)} */}
+      {/* {console.log("allprods", productData)} */}
       {/* Category Filters */}
       <Filters categories={categoryL1} />
       {/* Product Count */}
-      <p className="mb-5 self-end">{`${allProducts?.items.length} listings`}</p>
+      <p className="mb-5 self-end">{`${allProducts?.items?.length} listings`}</p>
       {/* Product Display */}
       <Suspense fallback={<div>Loading Products...</div>}>
         <AllProducts categories={categoryL1} products={allProducts} />

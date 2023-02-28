@@ -11,7 +11,7 @@ const ProductPage = async ({ params, designer }) => {
 
   return (
     <div className="pt-16 pb-44 px-20 flex flex-col">
-      {console.log("chosen product", chosenProduct)}
+      {/* {console.log("chosen product", chosenProduct)} */}
       {/* Back Button */}
       <BackButton />
       {/* Product Diplay and details */}

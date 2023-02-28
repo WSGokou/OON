@@ -11,7 +11,7 @@ const AllProducts = ({ categories, products }) => {
   // split products based on page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products?.items.slice(
+  const currentProducts = products?.items?.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -37,7 +37,7 @@ const AllProducts = ({ categories, products }) => {
         ))}
       </div>
       <div>
-        {products?.items.length > productsPerPage && (
+        {products?.items?.length > productsPerPage && (
           <Paginator
             defaultPage={1}
             count={Math.ceil(products?.items?.length / productsPerPage)}

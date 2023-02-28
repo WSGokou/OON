@@ -12,14 +12,14 @@ export default async function Home() {
 
   return (
     <main className="pt-24 pb-16 flex flex-col justify-center items-center">
-      {console.log("allaprobds", allProducts)}
+      {/* {console.log("allaprobds", allProducts)} */}
       <Top />
       <DoYouKnow />
       <WhoAreWe />
       <OurDesigners />
       <PopularServices />
       <OurVision />
-      <ShopLatest allProducts={allProducts.data.products.items} />
+      <ShopLatest allProducts={allProducts?.data?.products?.items} />
     </main>
   );
 }
