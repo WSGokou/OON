@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: process.env.API_ROUTE,
+  baseURL: `${process.env.VERCEL_URL}/api`,
 });
