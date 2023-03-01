@@ -11,7 +11,7 @@ const ShopLatest = ({ allProducts }) => {
       {/* Product display */}
       <div className="mb-16 gap-x-4 flex justify-center text-left w-max overflow-hidden">
         {/* Product Square */}
-        {allProducts.slice(0, 10).map((item) => (
+        {allProducts?.slice(0, 10).map((item) => (
           <Product
             key={item.id}
             productId={item.id}
