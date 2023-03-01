@@ -1,17 +1,15 @@
-const host = process.env.HOST;
-const url = `${host}/api/products`;
-const headers = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
-};
+import { instance } from "./axiosInstance";
+const url = "/products";
 
 export const getProducts = async () => {
-  const res = await fetch(url, {
-    method: "GET",
-    headers,
-  }).then((res) => res.json());
+  // const res = await fetch(url, {
+  //   method: "GET",
+  // }).then((res) => res.json());
 
-  console.log("utilprods", res);
+  const res = await instance.get(url);
 
-  return res;
+  const { data } = res;
+  console.log("utilprods", data);
+
+  return data;
 };
