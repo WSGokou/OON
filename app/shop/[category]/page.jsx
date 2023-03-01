@@ -12,11 +12,6 @@ const CategoryPage = async ({ params }) => {
   //Destructure data from db
   const categoryData = await getOONCats();
   const productData = await getProducts();
-  // .then((res) => res.json())
-  // .then((res) => res.data.data);
-  // const thirteenTwoProds = await fetch("http://localhost:3000/api/products", {
-  //   method: "GET",
-  // }).then((res) => res.json());
 
   // Main items
   const { categoryList } = categoryData?.data;

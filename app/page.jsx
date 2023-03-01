@@ -5,11 +5,8 @@ import PopularServices from "./(landing)/PopularServices";
 import ShopLatest from "./(landing)/ShopLatest";
 import Top from "./(landing)/Top";
 import WhoAreWe from "./(landing)/WhoAreWe";
-import { getProducts } from "@/utils/products";
 
-export default async function Home() {
-  const allProducts = await getProducts();
-
+export default function Home() {
   return (
     <main className="pt-24 pb-16 flex flex-col justify-center items-center">
       {/* {console.log("allaprobds", allProducts)} */}
@@ -19,7 +16,7 @@ export default async function Home() {
       <OurDesigners />
       <PopularServices />
       <OurVision />
-      <ShopLatest allProducts={allProducts?.data?.products?.items} />
+      <ShopLatest />
     </main>
   );
 }

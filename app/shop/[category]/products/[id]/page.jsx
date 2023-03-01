@@ -6,8 +6,8 @@ import BackButton from "./BackButton";
 const ProductPage = async ({ params, designer }) => {
   const id = Number(params.id);
   const productData = await getProducts();
-  const { products } = productData;
-  const chosenProduct = products?.items?.find((item) => item.id === id);
+  const allProducts = productData?.data?.products;
+  const chosenProduct = allProducts?.items?.find((item) => item.id === id);
 
   return (
     <div className="pt-16 pb-44 px-20 flex flex-col">

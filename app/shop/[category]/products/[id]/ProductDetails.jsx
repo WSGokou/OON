@@ -6,14 +6,14 @@ import React, { useState } from "react";
 
 const ProductDetails = ({ chosenProduct }) => {
   const [selectedImage, setSelectedImage] = useState(
-    chosenProduct.media_gallery[0].url
+    chosenProduct?.media_gallery[0].url
   );
 
   return (
     <div className="flex">
       {/* Small pictures */}
       <div className="flex flex-col min-w-fit gap-y-4 mr-3">
-        {chosenProduct.media_gallery
+        {chosenProduct?.media_gallery
           .filter((item) => item.url !== selectedImage)
           .map((item, idx) => (
             <div
@@ -47,7 +47,7 @@ const ProductDetails = ({ chosenProduct }) => {
       <div className="flex flex-col">
         {/* Title */}
         <p className="text-4xl font-bold uppercase mb-5">
-          {chosenProduct.name || "Product Name"}
+          {chosenProduct?.name || "Product Name"}
         </p>
         {/* Description */}
         <p>Product Description</p>

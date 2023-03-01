@@ -3,7 +3,10 @@ import Product from "../shop/[category]/products/Product";
 import Link from "next/link";
 import { getProducts } from "../../utils/products";
 
-const ShopLatest = ({ allProducts }) => {
+const ShopLatest = async () => {
+  const productData = await getProducts();
+  const allProducts = productData?.data?.products?.items;
+
   return (
     <div className="pt-24 flex flex-col text-center items-center">
       {/* {console.log(productData.data.products.items)} */}
