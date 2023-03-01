@@ -55,6 +55,6 @@ export async function GET() {
   }).then((res) => res.json());
 
   const data = res.data;
-
+  console.log("routecats", data);
   return NextResponse.json({ data });
 }

@@ -50,6 +50,7 @@ export async function GET() {
   }).then((res) => res.json());
 
   const data = res.data;
+  console.log("routeprods", data);
 
   return NextResponse.json({ data });
 }
