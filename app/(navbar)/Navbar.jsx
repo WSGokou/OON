@@ -25,7 +25,6 @@ const Navbar = () => {
         navActive ? "active" : ""
       }max-w-[1440px] w-full text-main-cream border border-black flex flex-row flex-grow h-9 items-center mx-auto font-bold`}
     >
-      {console.log("pathname", pathname)}
       {/* Individual button mapping */}
       {navItems.map((item) => (
         <NavItem
