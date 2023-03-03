@@ -6,7 +6,7 @@ import SelectService from "./(selectservice)/SelectService";
 import ProgressBar from "./ProgressBar";
 import AddPhotos from "../(photoupload)/AddPhotos";
 import Deliveryinfo from "./(deliveryinfo)/Deliveryinfo";
-import { useRepairContext } from "../../Context/repair";
+import { useRepairContext } from "../../(Context)/repair";
 import OrderSummaryPage from "../(ordersummary)/OrderSummary";
 
 const ServiceOrderPage = () => {

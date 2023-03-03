@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ChangeEvent } from "react";
 import UpArrow from "../../assets/icons/uparrow.svg";
-import { useRepairContext } from "../../Context/repair";
+import { useRepairContext } from "../../(Context)/repair";
 
 const PhotoUpload = ({ idx }) => {
   const { uploadedFiles, setUploadedFiles } = useRepairContext();

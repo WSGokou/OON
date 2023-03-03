@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PhotoUpload from "./PhotoUpload";
-import { useRepairContext } from "../../Context/repair";
+import { useRepairContext } from "../../(Context)/repair";
 
 const AddPhoto = () => {
   const { setOrderProgress, uploadedFiles, setUploadedFiles } =
