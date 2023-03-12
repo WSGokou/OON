@@ -1,6 +1,6 @@
 import {NextResponse} from 'next/server';
 
-const url = `${process.env.OON_URL}/graphql`;
+const url = process.env.OON_URL + '/graphql';
 const headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
