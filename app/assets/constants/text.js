@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const whoAreWe = (
   <p className='h-52 w-[451px] mb-20 font-sans text-xl'>
     {`We are oneoffnature. The UK's only indie designer marketplace and upcycling
