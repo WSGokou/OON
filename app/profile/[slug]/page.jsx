@@ -22,9 +22,7 @@ const ProfilePage = async ({params}) => {
           {/* User image */}
           <div
             className={
-              ('h-72 w-72 mb-3',
-              'border-black border-10 rounded-full',
-              'flex justify-center items-center')
+              'h-72 w-72 mb-3 border-black border-10 rounded-full flex justify-center items-center'
             }
           ></div>
           {/* User location */}
@@ -38,12 +36,7 @@ const ProfilePage = async ({params}) => {
           <div className='mb-7 text-6xl font-bold'>
             <p>My profile</p>
           </div>
-          <div
-            className={
-              ('p-6 h-72 w-[752px] mb-10',
-              'border-8 border-black bg-gray-300 bg-opacity-90')
-            }
-          >
+          <div className='p-6 h-72 w-[752px] mb-10 border-8 border-black bg-gray-300 bg-opacity-90'>
             Personal Bio
           </div>
           <div className='mb-10'>
