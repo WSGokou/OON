@@ -1,58 +1,59 @@
-"use client";
+'use client';
 
+import React from 'react';
 import {
   createContext,
   useContext,
   Dispatch,
   SetStateAction,
   useState,
-} from "react";
+} from 'react';
 
 const RepairContext = createContext({
   orderProgress: 1,
-  selectedItem: "",
-  selectedService: { text: "", price: "" },
-  uploadedFiles: { fileId: 1, fileName: "", comment: "" },
-  selectedDatePu: "",
+  selectedItem: '',
+  selectedService: {text: '', price: ''},
+  uploadedFiles: {fileId: 1, fileName: '', comment: ''},
+  selectedDatePu: '',
   selectedTimePu: {
-    start: "",
-    end: "",
+    start: '',
+    end: '',
   },
-  selectedDateDo: "",
+  selectedDateDo: '',
   selectedTimeDo: {
-    start: "",
-    end: "",
+    start: '',
+    end: '',
   },
-  selectedAddressPu: "",
-  selectedAddressDo: "",
+  selectedAddressPu: '',
+  selectedAddressDo: '',
 });
 
-export const RepairContextProvider = ({ children }) => {
+export const RepairContextProvider = ({children}) => {
   const [orderProgress, setOrderProgress] = useState(1);
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState('');
   const [selectedService, setSelectedService] = useState({
-    text: "",
-    price: "",
+    text: '',
+    price: '',
   });
   const [uploadedFiles, setUploadedFiles] = useState([
     {
       fileId: 1,
-      fileUrl: "",
-      comment: "",
+      fileUrl: '',
+      comment: '',
     },
   ]);
   const [selectedDatePu, setSelectedDatePu] = useState();
   const [selectedTimePu, setSelectedTimePu] = useState({
-    start: "",
-    end: "",
+    start: '',
+    end: '',
   });
   const [selectedDateDo, setSelectedDateDo] = useState();
   const [selectedTimeDo, setSelectedTimeDo] = useState({
-    start: "",
-    end: "",
+    start: '',
+    end: '',
   });
-  const [selectedAddressPu, setSelectedAddressPu] = useState("");
-  const [selectedAddressDo, setSelectedAddressDo] = useState("");
+  const [selectedAddressPu, setSelectedAddressPu] = useState('');
+  const [selectedAddressDo, setSelectedAddressDo] = useState('');
 
   return (
     <RepairContext.Provider

@@ -1,6 +1,7 @@
-import { RepairContextProvider } from "../(Context)/repair";
+import React from 'react';
+import {RepairContextProvider} from '../(Context)/repair';
 
-export default function OrderLayout({ children }) {
+export default function OrderLayout({children}) {
   return (
     <section>
       <RepairContextProvider>

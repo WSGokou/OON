@@ -1,14 +1,14 @@
-import Image from "next/image";
-import { ChangeEvent } from "react";
-import UpArrow from "../../assets/icons/uparrow.svg";
-import { useRepairContext } from "../../(Context)/repair";
+import Image from 'next/image';
+import React from 'react';
+import UpArrow from '../../assets/icons/uparrow.svg';
+import {useRepairContext} from '../../(Context)/repair';
 
-const PhotoUpload = ({ idx }) => {
-  const { uploadedFiles, setUploadedFiles } = useRepairContext();
+const PhotoUpload = ({idx}) => {
+  const {uploadedFiles, setUploadedFiles} = useRepairContext();
   const handleUpload = (e) => {
-    console.log("uploadedfile", e.target.files);
+    console.log('uploadedfile', e.target.files);
     const currentFileIdx = uploadedFiles.findIndex(
-      (file) => file.fileId === idx
+      (file) => file.fileId === idx,
     );
     const updatedFile = {
       ...uploadedFiles[currentFileIdx],
@@ -23,49 +23,52 @@ const PhotoUpload = ({ idx }) => {
   };
 
   return (
-    <div className="flex">
+    <div className='flex'>
       {/* File upload */}
       <div>
-        <p className="text-xl font-semibold mb-1">Media</p>
-        <p className="text-sm mb-2">format: JPEG, MPEG, MOV</p>
-        <div className="w-72 h-48 border-5 border-black flex flex-col justify-center items-center relative">
+        <p className='text-xl font-semibold mb-1'>Media</p>
+        <p className='text-sm mb-2'>format: JPEG, MPEG, MOV</p>
+        <div className='w-72 h-48 border-5 border-black flex flex-col justify-center items-center relative'>
           {!uploadedFiles[idx - 1]?.fileUrl ? (
             <button
               onClick={() => {
-                document.getElementById("getFile").click();
+                document.getElementById('getFile').click();
               }}
-              className="w-16 h-16 mb-1 border-5 border-black flex justify-center items-center bg-active-green rounded-full"
+              className='w-16 h-16 mb-1 border-5 border-black flex justify-center items-center bg-active-green rounded-full'
             >
-              <Image src={UpArrow} alt="Upload" />
+              <Image
+                src={UpArrow}
+                alt='Upload'
+              />
             </button>
           ) : (
             <Image
               onClick={() => {
-                document.getElementById("getFile").click();
+                document.getElementById('getFile').click();
               }}
               src={uploadedFiles[idx - 1]?.fileUrl}
               fill
-              alt="Image Added!"
+              alt='Image Added!'
             />
           )}
 
           <input
-            id="getFile"
+            id='getFile'
             onChange={handleUpload}
-            type="file"
-            className="hidden"
+            type='file'
+            className='hidden'
           />
         </div>
       </div>
       {/* Comment box */}
       <div>
-        <p className="text-xl font-semibold mb-1">Comment</p>
-        <p className="text-sm mb-2">Write down the message if you want.</p>
+        <p className='text-xl font-semibold mb-1'>Comment</p>
+        <p className='text-sm mb-2'>Write down the message if you want.</p>
         <textarea
           value={uploadedFiles[idx - 1]?.comment}
           onChange={(e) => {
             const currentFileIdx = uploadedFiles.findIndex(
-              (file) => file.fileId === idx
+              (file) => file.fileId === idx,
             );
             const updatedFile = {
               ...uploadedFiles[currentFileIdx],
@@ -79,8 +82,8 @@ const PhotoUpload = ({ idx }) => {
 
             setUploadedFiles(newFiles);
           }}
-          placeholder="type here..."
-          className="p-4 w-96 h-48 -ml-1 border-5 border-black"
+          placeholder='type here...'
+          className='p-4 w-96 h-48 -ml-1 border-5 border-black'
         ></textarea>
       </div>
     </div>

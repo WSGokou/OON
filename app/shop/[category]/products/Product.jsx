@@ -1,52 +1,38 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import Heart from "../../../assets/icons/heart.svg";
-import OonLogo from "../../../assets/images/oon-logo.svg";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import OonLogo from '../../../assets/images/oon-logo.svg';
+import WishlistAddRemove from '@/app/(wishlist)/WishlistAddRemove';
 
-const Product = ({ productId, media, price, name, designer }) => {
+const Product = ({productId, media, price, name, designer, page, sku, idx}) => {
   return (
-    <div className="w-64 flex flex-col group">
+    <div className='w-64 flex flex-col group relative'>
       {/* Product Square */}
       <Link href={`/shop/category/products/${productId}`}>
-        <div className="h-64 w-full mb-2 border-black bg-white group-hover:bg-gradient-to-r from-[#ffbc1014] to-[#ffbc1014] border-10 relative">
+        <div className='h-64 w-64 mb-2 border-black bg-white group-hover:bg-gradient-to-r from-[#ffbc1014] to-[#ffbc1014] border-10 relative'>
           <Image
             src={media || OonLogo}
-            alt="Image"
+            alt='Image'
             fill
-            className="object-contain"
-            sizes="100%"
+            className='object-contain'
+            sizes='100%'
           />
-          <svg
-            width="21"
-            height="20"
-            viewBox="0 0 21 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="hidden group-hover:inline-block hover:fill-[#EF93B2] absolute top-2 right-2 z-10"
-          >
-            <path d="M19.1598 2.61006C18.0981 1.54806 16.6905 0.902384 15.193 0.790439C13.6955 0.678494 12.2076 1.10772 10.9998 2.00006C9.72744 1.0537 8.14378 0.624569 6.56771 0.799095C4.99164 0.973621 3.54023 1.73884 2.50576 2.94064C1.47129 4.14245 0.93061 5.69158 0.992588 7.27607C1.05457 8.86057 1.71461 10.3627 2.83979 11.4801L10.2898 18.9301C10.3828 19.0238 10.4934 19.0982 10.6152 19.1489C10.7371 19.1997 10.8678 19.2259 10.9998 19.2259C11.1318 19.2259 11.2625 19.1997 11.3844 19.1489C11.5062 19.0982 11.6168 19.0238 11.7098 18.9301L19.1598 11.4801C19.7424 10.8978 20.2047 10.2064 20.52 9.44542C20.8354 8.68445 20.9977 7.86879 20.9977 7.04506C20.9977 6.22133 20.8354 5.40567 20.52 4.64469C20.2047 3.88371 19.7424 3.19233 19.1598 2.61006Z" />
-          </svg>
-          <svg
-            width="21"
-            height="20"
-            viewBox="0 0 21 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="hidden group-hover:inline-block absolute top-2 right-2 z-20"
-          >
-            <path
-              fill="black"
-              d="M19.1598 2.60981C18.0981 1.54782 16.6905 0.90214 15.193 0.790195C13.6955 0.67825 12.2076 1.10748 10.9998 1.99981C9.72744 1.05345 8.14378 0.624325 6.56771 0.798851C4.99164 0.973377 3.54023 1.73859 2.50576 2.9404C1.47129 4.14221 0.93061 5.69133 0.992588 7.27583C1.05457 8.86032 1.71461 10.3625 2.83979 11.4798L10.2898 18.9298C10.3828 19.0235 10.4934 19.0979 10.6152 19.1487C10.7371 19.1995 10.8678 19.2256 10.9998 19.2256C11.1318 19.2256 11.2625 19.1995 11.3844 19.1487C11.5062 19.0979 11.6168 19.0235 11.7098 18.9298L19.1598 11.4798C19.7424 10.8975 20.2047 10.2062 20.52 9.44518C20.8354 8.6842 20.9977 7.86854 20.9977 7.04481C20.9977 6.22108 20.8354 5.40542 20.52 4.64445C20.2047 3.88347 19.7424 3.19209 19.1598 2.60981ZM17.7498 10.0698L10.9998 16.8098L4.24979 10.0698C3.65496 9.47251 3.24976 8.71286 3.08502 7.88615C2.92027 7.05945 3.00332 6.2025 3.32374 5.42281C3.64416 4.64312 4.18768 3.97541 4.88613 3.50344C5.58458 3.03147 6.40685 2.77625 7.24979 2.76981C8.3759 2.77257 9.45488 3.22215 10.2498 4.01981C10.3428 4.11354 10.4534 4.18794 10.5752 4.23871C10.6971 4.28947 10.8278 4.31561 10.9598 4.31561C11.0918 4.31561 11.2225 4.28947 11.3444 4.23871C11.4662 4.18794 11.5768 4.11354 11.6698 4.01981C12.4881 3.3107 13.5453 2.93896 14.6273 2.97984C15.7094 3.02072 16.7355 3.47116 17.498 4.24C18.2605 5.00884 18.7024 6.03865 18.7343 7.121C18.7662 8.20335 18.3857 9.2574 17.6698 10.0698H17.7498Z"
-            />
-          </svg>
-        </div>
-        <div className="mb-1 flex justify-between text-base font-bold uppercase">
-          <p>{name || "Product Name"}</p>
-          <p>{price ? `£${price?.toFixed(2)}` : "£69.00"}</p>
+          {/* Add/Remove buttons */}
         </div>
       </Link>
-      <p className="text-sm mr-auto">{designer || "Designer Name"}</p>
+      <WishlistAddRemove
+        classes={`${
+          page === 'wishlist' && 'fill-pink-400 hover:fill-none'
+        } hover:fill-pink-400 z-50 hidden group-hover:block cursor-pointer absolute right-3 top-3`}
+        page={page}
+        sku={sku}
+        idx={idx}
+      />
+      <div className='mb-1 flex justify-between text-base font-bold uppercase'>
+        <p>{name || 'Product Name'}</p>
+        <p>{price ? `£${price?.toFixed(2)}` : '£69.00'}</p>
+      </div>
+      <p className='text-sm mr-auto'>{designer || 'Designer Name'}</p>
     </div>
   );
 };

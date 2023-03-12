@@ -1,34 +1,51 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import NavItem from "./Navitem";
-import { usePathname } from "next/navigation";
-
-const navItems = [
-  { idx: 1, name: "WOMEN", path: "/shop/women" },
-  { idx: 2, name: "MEN", path: "/shop/men" },
-  { idx: 3, name: "ACCESSORIES", path: "/shop/gear" },
-  { idx: 4, name: "ABOUT US", path: "/about" },
-  { idx: 5, name: "BLOG", path: "/blog" },
-  { idx: 6, name: "SIGN UP", path: "/" },
-  { idx: 7, name: "LOG IN", path: "/auth/login" },
-];
+import React, {useState} from 'react';
+import NavItem from './Navitem';
+import {usePathname} from 'next/navigation';
+import {signOut, useSession} from 'next-auth/react';
 
 const Navbar = () => {
   const pathname = usePathname();
+  const session = useSession();
+  const user = session?.data?.user;
+
+  if (Date(session?.data?.expires) < new Date()) {
+    signOut();
+  }
+
   const [navActive, setNavActive] = useState(null);
+
+  const navItems = [
+    {idx: 1, label: 'WOMEN', path: '/shop/women'},
+    {idx: 2, label: 'MEN', path: '/shop/men'},
+    {idx: 3, label: 'ACCESSORIES', path: '/shop/gear'},
+    {idx: 4, label: 'ABOUT US', path: '/about'},
+    {idx: 5, label: 'BLOG', path: '/blog'},
+    {
+      idx: 6,
+      label: session?.status !== 'authenticated' ? 'SIGN UP' : 'WELCOME',
+      path: session?.status !== 'authenticated' ? '/' : '',
+    },
+    {
+      idx: 7,
+      label: session?.status !== 'authenticated' ? 'LOG IN' : 'LOG OUT',
+      path: '/auth/login',
+    },
+  ];
 
   return (
     // Bar container
     <div
       className={`${
-        navActive ? "active" : ""
+        navActive ? 'active' : ''
       }max-w-[1440px] w-full text-main-cream border border-black flex flex-row flex-grow h-9 items-center mx-auto font-bold`}
     >
+      {/* {console.log("navbarsesh", session?.status)} */}
       {/* Individual button mapping */}
       {navItems.map((item) => (
         <NavItem
-          key={item.name}
+          key={item.label}
           active={pathname === item.path}
           setNavActive={setNavActive}
           {...item}

@@ -1,13 +1,15 @@
-import { NextResponse } from "next/server";
+import {NextResponse} from 'next/server';
 
-const url = "https://oneoffnature.com/graphql/";
+const url = `${process.env.OON_URL}/graphql`;
 const headers = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
 };
-const method = "POST";
+const method = 'POST';
 
-export async function GET() {
+export async function GET(req) {
+  // console.log("reqitems", req.nextUrl.searchParams);
+
   const query = `
   query {
     products(
@@ -18,6 +20,7 @@ export async function GET() {
       items {
         id
         name
+        stock_status
         categories {
           name
         }
@@ -51,5 +54,5 @@ export async function GET() {
 
   const data = res.data;
 
-  return NextResponse.json({ data });
+  return NextResponse.json({data});
 }

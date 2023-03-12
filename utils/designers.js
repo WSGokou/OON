@@ -1,10 +1,10 @@
-const localUrl = "http://localhost/graphql/";
-const url = "https://oneoffnature.com/graphql";
+const localUrl = `${process.env.MAGENTO_URL}/graphql`;
+const url = `${process.env.OON_URL}/graphql`;
 const headers = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
 };
-const method = "POST";
+const method = 'POST';
 
 export const getDesigners = async () => {
   const query = `query {}`;

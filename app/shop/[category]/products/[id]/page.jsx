@@ -1,21 +1,22 @@
-import React from "react";
-import { getProducts } from "@/utils/products";
-import ProductDetails from "./ProductDetails";
-import BackButton from "./BackButton";
+import React from 'react';
 
-const ProductPage = async ({ params, designer }) => {
-  const id = Number(params.id);
-  const productData = await getProducts();
-  const allProducts = productData?.data?.products;
-  const chosenProduct = allProducts?.items?.find((item) => item.id === id);
+import ProductDetails from './ProductDetails';
+import BackButton from './BackButton';
+
+const ProductPage = async ({params, designer}) => {
+  const productId = Number(params.id); // Product id from url
 
   return (
-    <div className="pt-16 pb-44 px-20 flex flex-col">
+    <div className='pt-16 pb-44 px-20 flex flex-col'>
       {/* {console.log("chosen product", chosenProduct)} */}
       {/* Back Button */}
       <BackButton />
       {/* Product Diplay and details */}
-      <ProductDetails chosenProduct={chosenProduct} />
+      <ProductDetails
+        productId={productId}
+        // chosenProduct={chosenProduct}
+        // cartId={cartId}
+      />
       {/* More from designer */}
       <div>
         <p></p>
