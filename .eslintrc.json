@@ -14,7 +14,7 @@
     "indent": "off",
     "require-jsdoc": "off",
     "operator-linebreak": "off",
-    "max-len": "warn",
+    "max-len": "off",
     "react/prop-types": "off",
     "no-unused-vars": "warn"
   }

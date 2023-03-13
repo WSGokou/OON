@@ -1,7 +1,10 @@
 import {NextResponse} from 'next/server';
 
 const oonUrl = process.env.OON_URL;
-const baseUrl = process.env.MAGENTO_URL;
+const headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+};
 
 export async function GET(req) {
   const searchParams = req.nextUrl.searchParams; // Get request params
@@ -10,11 +13,8 @@ export async function GET(req) {
   // console.log("rqcustrouter", rq, searchParams);
 
   // Set headers
-  const headers = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${token}`,
-  };
+
+  headers['Authorization'] = `Bearer ${token}`;
 
   let res; // Initiate res variable
   let query; // Initiate query variable
