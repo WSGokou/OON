@@ -29,9 +29,14 @@ const LoginPage = () => {
           user: session?.user,
           rq: 'getWishlist',
         }),
+        customerRequests({
+          user: session?.user,
+          rq: 'getCustomer',
+        }),
       ]);
       setCart(cartData);
       setWishlist(wishlistData.customer.wishlists[0]);
+      setCustomer(customerData);
       console.log('Logged in successfully');
       // console.log("logincart", cart);
       // console.log("loginwishlist", wishlist);

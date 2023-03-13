@@ -10,6 +10,9 @@ import {
   useState,
   useEffect,
 } from 'react';
+import {getSession} from 'next-auth/react';
+import {authOptions} from '@/pages/api/auth/[...nextauth]';
+import {customerRequests} from '@/utils/customer';
 
 const ShopContext = createContext({
   categories: [],
@@ -23,14 +26,43 @@ export const ShopContextProvider = ({children}) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [customer, setCustomer] = useState([]);
+
+  // Function to fetch products on page load
+  const fetchProducts = async () => {
+    const {data: productData} = await getProducts();
+    setProducts(productData.products);
+  };
+
+  // Fucntion to set cart, wishlist, and customer data if user is already logged in
+  const setSessionData = async () => {
+    await getSession(authOptions).then(async (session) => {
+      if (session.user) {
+        const [cartData, {data: wishlistData}, customerData] =
+          await Promise.all([
+            customerRequests({
+              user: session?.user,
+              rq: 'getCart',
+            }),
+            customerRequests({
+              user: session?.user,
+              rq: 'getWishlist',
+            }),
+            customerRequests({
+              user: session?.user,
+              rq: 'getCustomer',
+            }),
+          ]);
+        setCart(cartData);
+        setWishlist(wishlistData?.customer?.wishlists[0]);
+        setCustomer(customerData);
+      }
+    });
+  };
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const {data: productData} = await getProducts();
-      // console.log("contextproducts", productData);
-      setProducts(productData.products);
-    };
     fetchProducts();
+    setSessionData();
   }, []);
 
   return (
@@ -44,6 +76,8 @@ export const ShopContextProvider = ({children}) => {
         setCart,
         wishlist,
         setWishlist,
+        customer,
+        setCustomer,
       }}
     >
       {children}
