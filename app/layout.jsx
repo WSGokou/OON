@@ -17,7 +17,7 @@ export default function RootLayout({children, session}) {
       */}
       <head />
       <body>
-        <div className='min-w-[1440px] max-w-[1440px] mx-auto flex flex-col bg-main-cream'>
+        <div className='min-w-[1440px] max-w-[1440px] min-h-screen mx-auto flex flex-col bg-main-cream relative'>
           <SessionProvider session={session}>
             <ShopContextProvider session={session}>
               <Header />

@@ -9,7 +9,7 @@ import HeaderCartButton from './shop/cart/HeaderCartButton';
 
 const Header = () => {
   return (
-    <main className='flex flex-row justify-between mx-40 flex-auto items-center h-24 min-w-[1080px]'>
+    <main className='flex flex-row justify-between mx-40 items-center h-24 min-w-[1080px]'>
       {/* Search bar */}
       <div className='flex flex-row items-center w-80 h-10'>
         <Image
