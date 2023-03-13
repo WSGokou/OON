@@ -14,7 +14,7 @@ const ProfileLeft = () => {
   };
 
   useEffect(() => {
-    if (!customer) {
+    if (customer === undefined) {
       getCustomerDetails();
     }
   });
@@ -29,7 +29,8 @@ const ProfileLeft = () => {
       ></div>
       {/* User location */}
       <p className='text-4xl text-center font-semibold mb-5'>
-        {customer && `${customer?.firstname} ${customer?.lastname}`}
+        {customer.firstname && customer.firstname}{' '}
+        {customer.lastname && customer.lastname}
       </p>
       <p className='text-3xl text-center font-semibold mb-10'>
         {customer.addresses && `${customer?.addresses[0]?.city}`}
