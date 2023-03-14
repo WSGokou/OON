@@ -20,7 +20,7 @@ const LoginPage = () => {
       // Get session, cart, wishlist and save to context after login succeeds
       const session = await getSession();
 
-      const [cartData, {data: wishlistData}] = await Promise.all([
+      const [cartData, {data: wishlistData}, customerData] = await Promise.all([
         customerRequests({
           user: session?.user,
           rq: 'getCart',
