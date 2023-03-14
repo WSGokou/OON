@@ -9,7 +9,7 @@ const LoginPage = () => {
   const email = useRef('');
   const password = useRef('');
   const session = useSession();
-  const {setCart, setWishlist} = useShopContext();
+  const {setCart, setWishlist, setCustomer} = useShopContext();
 
   const handleLogin = async () => {
     const res = await signIn('credentials', {
