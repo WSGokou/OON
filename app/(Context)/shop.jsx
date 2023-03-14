@@ -37,7 +37,7 @@ export const ShopContextProvider = ({children}) => {
   // Fucntion to set cart, wishlist, and customer data if user is already logged in
   const setSessionData = async () => {
     await getSession(authOptions).then(async (session) => {
-      if (session.user) {
+      if (session?.user) {
         const [cartData, {data: wishlistData}, customerData] =
           await Promise.all([
             customerRequests({
